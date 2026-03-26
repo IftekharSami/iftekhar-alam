@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<!--
+  Premium personal portfolio for Iftekhar Alam
+  -------------------------------------------------
+  This site is built with plain HTML, Tailwind CSS and a touch of JavaScript for animations and form submission.
+  Sections are clearly marked with HTML comments so you can easily find and modify text, links and images later.
+  When editing, look for the comments that start with EDIT ME to quickly locate the content you might want to change.
+-->
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Premium portfolio of Iftekhar Alam, a Senior WordPress Developer & Web Designer specialising in modern, responsive websites."
+    />
+    <title>Iftekhar Alam • WordPress Developer & Designer</title>
+    <!-- Google Fonts -->
+    <link
+      rel="preconnect"
+      href="https://fonts.googleapis.com"
+    />
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Tailwind via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      // Tailwind custom configuration
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+            },
+            colors: {
+              dark: '#0e0e1c',
+              primary: {
+                DEFAULT: '#7e5bef',
+                light: '#a18eff',
+                dark: '#5a3bb5',
+              },
+              secondary: '#272f5a',
+            },
+            boxShadow: {
+              card: '0 10px 25px -5px rgba(0, 0, 0, 0.6)',
+            },
+            keyframes: {
+              float: {
+                '0%, 100%': { transform: 'translateY(-2%)' },
+                '50%': { transform: 'translateY(2%)' },
+              },
+            },
+            animation: {
+              float: 'float 6s ease-in-out infinite',
+            },
+          },
+        },
+      };
+    </script>
+    <!-- AOS animation library -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/aos@2.3.4/dist/aos.css"
+    />
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body
+    class="bg-dark text-gray-200 overflow-x-hidden antialiased selection:bg-primary selection:text-white"
+  >
+    <!-- =================== Navigation =================== -->
+    <header
+      class="fixed top-0 inset-x-0 z-50 backdrop-blur bg-dark/70 border-b border-white/5"
+    >
+      <div
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16"
+      >
+        <a href="#home" class="text-lg font-semibold text-white"
+          >Iftekhar Alam</a
+        >
+        <nav>
+          <ul class="hidden md:flex space-x-8 text-sm">
+            <li>
+              <a
+                href="#services"
+                class="hover:text-primary transition-colors"
+                >Services</a
+              >
+            </li>
+            <li>
+              <a
+                href="#work"
+                class="hover:text-primary transition-colors"
+                >Work</a
+              >
+            </li>
+            <li>
+              <a
+                href="#about"
+                class="hover:text-primary transition-colors"
+                >About</a
+              >
+            </li>
+            <li>
+              <a
+                href="#contact"
+                class="hover:text-primary transition-colors"
+                >Contact</a
+              >
+            </li>
+          </ul>
+        </nav>
+        <!-- Mobile menu button -->
+        <button
+          id="mobileMenuBtn"
+          class="md:hidden text-gray-400 hover:text-white focus:outline-none"
+          aria-label="Toggle menu"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-6 h-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M3.75 6.75h16.5M3.75 12h16.5M3.75 17.25h16.5"
+            />
+          </svg>
+        </button>
+      </div>
+      <!-- Mobile menu -->
+      <div
+        id="mobileMenu"
+        class="md:hidden max-h-0 overflow-hidden transition-all duration-300"
+      >
+        <ul
+          class="px-4 pb-4 pt-2 space-y-2 text-sm border-t border-white/5"
+        >
+          <li>
+            <a
+              href="#services"
+              class="block px-2 py-2 hover:bg-white/5 rounded"
+              >Services</a
+            >
+          </li>
+          <li>
+            <a
+              href="#work"
+              class="block px-2 py-2 hover:bg-white/5 rounded"
+              >Work</a
+            >
+          </li>
+          <li>
+            <a
+              href="#about"
+              class="block px-2 py-2 hover:bg-white/5 rounded"
+              >About</a
+            >
+          </li>
+          <li>
+            <a
+              href="#contact"
+              class="block px-2 py-2 hover:bg-white/5 rounded"
+              >Contact</a
+            >
+          </li>
+        </ul>
+      </div>
+    </header>
+
+    <main id="home" class="pt-24">
+      <!-- =================== Hero =================== -->
+      <section
+        id="hero"
+        class="relative overflow-hidden py-24 lg:py-32"
+      >
+        <!-- Floating background shapes -->
+        <div
+          class="absolute -top-16 -left-20 w-96 h-96 bg-primary/30 rounded-full blur-3xl animate-float"
+        ></div>
+        <div
+          class="absolute -bottom-20 -right-24 w-96 h-96 bg-purple-600/30 rounded-full blur-3xl animate-float"
+        ></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+          <div
+            class="flex flex-col lg:flex-row items-center justify-between"
+          >
+            <div class="max-w-xl" data-aos="fade-up">
+              <!-- EDIT ME: Hero headline -->
+              <h1
+                class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight text-white mb-4"
+              >
+                Building <span class="text-primary">Premium</span>
+                WordPress Websites
+              </h1>
+              <!-- EDIT ME: Hero subheadline -->
+              <p
+                class="text-lg sm:text-xl text-gray-400 mb-8"
+              >
+                I help businesses stand out online with modern, responsive and
+                conversion‑focused websites.
+              </p>
+              <div class="flex space-x-4">
+                <!-- EDIT ME: Primary CTA -->
+                <a
+                  href="#contact"
+                  class="inline-block px-6 py-3 bg-primary hover:bg-primary-dark text-white rounded-full transition-transform transform hover:-translate-y-1 shadow-lg shadow-primary/30"
+                  >Let’s Work Together</a
+                >
+                <!-- EDIT ME: Secondary CTA -->
+                <a
+                  href="#work"
+                  class="inline-block px-6 py-3 border border-white/20 hover:border-primary text-gray-300 hover:text-primary rounded-full transition-transform transform hover:-translate-y-1"
+                  >View Projects</a
+                >
+              </div>
+              <!-- Quick trust indicators -->
+              <div class="mt-10 grid grid-cols-2 sm:grid-cols-3 gap-6">
+                <div class="flex items-center space-x-3" data-aos="fade-up" data-aos-delay="100">
+                  <span class="text-primary">
+                    <ion-icon name="time-outline" class="text-2xl"></ion-icon>
+                  </span>
+                  <p class="text-sm text-gray-300">
+                    4+ Years Experience
+                  </p>
+                </div>
+                <div class="flex items-center space-x-3" data-aos="fade-up" data-aos-delay="200">
+                  <span class="text-primary">
+                    <ion-icon name="layers-outline" class="text-2xl"></ion-icon>
+                  </span>
+                  <p class="text-sm text-gray-300">
+                    Modern & Responsive
+                  </p>
+                </div>
+                <div class="flex items-center space-x-3" data-aos="fade-up" data-aos-delay="300">
+                  <span class="text-primary">
+                    <ion-icon name="flash-outline" class="text-2xl"></ion-icon>
+                  </span>
+                  <p class="text-sm text-gray-300">
+                    Fast & SEO Friendly
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div
+              class="mt-12 lg:mt-0 flex-shrink-0 max-w-lg"
+              data-aos="zoom-in"
+            >
+              <!-- Hero image -->
+              <img
+                src="./assets/hero.png"
+                alt="Abstract 3D illustration"
+                class="w-full h-auto object-contain drop-shadow-xl"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =================== Services =================== -->
+      <section id="services" class="py-20" aria-labelledby="services-title">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-12">
+            <!-- EDIT ME: Services heading -->
+            <h2
+              id="services-title"
+              class="text-3xl sm:text-4xl font-bold mb-3"
+            >
+              What I Do
+            </h2>
+            <p class="text-gray-400 max-w-2xl mx-auto">
+              From crafting modern business websites to optimizing performance, my services cover everything you need for a successful online presence.
+            </p>
+          </div>
+          <div
+            class="grid gap-8 md:grid-cols-2 lg:grid-cols-3"
+          >
+            <!-- Service card template: copy & modify for each service -->
+            <!-- WordPress Website Design -->
+            <div
+              class="tilt-card bg-white/5 backdrop-blur p-6 rounded-2xl border border-white/10 shadow-card hover:shadow-xl transition-shadow"
+              data-aos="fade-up"
+            >
+              <div class="mb-4 text-primary text-4xl">
+                <ion-icon name="desktop-outline"></ion-icon>
+              </div>
+              <h3 class="text-xl font-semibold mb-2">
+                WordPress Website Design
+              </h3>
+              <p class="text-gray-400">
+                Custom WordPress designs tailored to your brand and goals for a professional online presence.
+              </p>
+            </div>
+            <!-- Business Website Development -->
+            <div
+              class="tilt-card bg-white/5 backdrop-blur p-6 rounded-2xl border border-white/10 shadow-card hover:shadow-xl transition-shadow"
+              data-aos="fade-up"
+              data-aos-delay="100"
+            >
+              <div class="mb-4 text-primary text-4xl">
+                <ion-icon name="business-outline"></ion-icon>
+              </div>
+              <h3 class="text-xl font-semibold mb-2">
+                Business Website Development
+              </h3>
+              <p class="text-gray-400">
+                Robust and scalable websites that help your business stand out and reach more customers.
+              </p>
+            </div>
+            <!-- Elementor Customization -->
+            <div
+              class="tilt-card bg-white/5 backdrop-blur p-6 rounded-2xl border border-white/10 shadow-card hover:shadow-xl transition-shadow"
+              data-aos="fade-up"
+              data-aos-delay="200"
+            >
+              <div class="mb-4 text-primary text-4xl">
+                <ion-icon name="construct-outline"></ion-icon>
+              </div>
+              <h3 class="text-xl font-semibold mb-2">
+                Elementor Customization
+              </h3>
+              <p class="text-gray-400">
+                Tailored Elementor designs and tweaks to elevate your site’s look and usability.
+              </p>
+            </div>
+            <!-- Speed Optimization -->
+            <div
+              class="tilt-card bg-white/5 backdrop-blur p-6 rounded-2xl border border-white/10 shadow-card hover:shadow-xl transition-shadow"
+              data-aos="fade-up"
+              data-aos-delay="300"
+            >
+              <div class="mb-4 text-primary text-4xl">
+                <ion-icon name="speedometer-outline"></ion-icon>
+              </div>
+              <h3 class="text-xl font-semibold mb-2">
+                Speed Optimization
+              </h3>
+              <p class="text-gray-400">
+                Improve loading times and performance for better user experience and SEO rankings.
+              </p>
+            </div>
+            <!-- Landing Page Design -->
+            <div
+              class="tilt-card bg-white/5 backdrop-blur p-6 rounded-2xl border border-white/10 shadow-card hover:shadow-xl transition-shadow"
+              data-aos="fade-up"
+              data-aos-delay="400"
+            >
+              <div class="mb-4 text-primary text-4xl">
+                <ion-icon name="rocket-outline"></ion-icon>
+              </div>
+              <h3 class="text-xl font-semibold mb-2">
+                Landing Page Design
+              </h3>
+              <p class="text-gray-400">
+                High‑converting landing pages designed to capture leads and maximize ROI.
+              </p>
+            </div>
+            <!-- SEO-Friendly Setup -->
+            <div
+              class="tilt-card bg-white/5 backdrop-blur p-6 rounded-2xl border border-white/10 shadow-card hover:shadow-xl transition-shadow"
+              data-aos="fade-up"
+              data-aos-delay="500"
+            >
+              <div class="mb-4 text-primary text-4xl">
+                <ion-icon name="search-outline"></ion-icon>
+              </div>
+              <h3 class="text-xl font-semibold mb-2">
+                SEO‑Friendly Setup
+              </h3>
+              <p class="text-gray-400">
+                Semantic, accessible and SEO‑ready websites to help you rank higher on search engines.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =================== Portfolio / Work =================== -->
+      <section id="work" class="py-20 bg-secondary/50" aria-labelledby="work-title">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-12">
+            <!-- EDIT ME: Work heading -->
+            <h2
+              id="work-title"
+              class="text-3xl sm:text-4xl font-bold mb-3"
+            >
+              Selected Work
+            </h2>
+            <p class="text-gray-400 max-w-2xl mx-auto">
+              A showcase of some of the websites I’ve built for clients around the world.
+            </p>
+          </div>
+          <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            <!-- Portfolio items: update image src and links accordingly -->
+            <div
+              class="tilt-card bg-dark border border-white/10 rounded-2xl overflow-hidden shadow-card hover:shadow-xl transition-shadow"
+              data-aos="fade-up"
+            >
+              <img
+                src="./assets/portfolio1.png"
+                alt="atithisheba.com website preview"
+                class="w-full h-48 object-cover"
+              />
+              <div class="p-5">
+                <h3 class="text-xl font-semibold mb-1">Atithi Sheba</h3>
+                <p class="text-sm text-gray-400 mb-3">
+                  Hospitality & Booking – Modern responsive WordPress site.
+                </p>
+                <a
+                  href="https://www.atithisheba.com"
+                  target="_blank"
+                  class="text-primary hover:underline"
+                  >Live Preview →</a
+                >
+              </div>
+            </div>
+            <div
+              class="tilt-card bg-dark border border-white/10 rounded-2xl overflow-hidden shadow-card hover:shadow-xl transition-shadow"
+              data-aos="fade-up"
+              data-aos-delay="100"
+            >
+              <img
+                src="./assets/portfolio2.png"
+                alt="fecci.eu website preview"
+                class="w-full h-48 object-cover"
+              />
+              <div class="p-5">
+                <h3 class="text-xl font-semibold mb-1">FECCI</h3>
+                <p class="text-sm text-gray-400 mb-3">
+                  European Business Site – Sleek corporate design.
+                </p>
+                <a
+                  href="https://www.fecci.eu"
+                  target="_blank"
+                  class="text-primary hover:underline"
+                  >Live Preview →</a
+                >
+              </div>
+            </div>
+            <div
+              class="tilt-card bg-dark border border-white/10 rounded-2xl overflow-hidden shadow-card hover:shadow-xl transition-shadow"
+              data-aos="fade-up"
+              data-aos-delay="200"
+            >
+              <img
+                src="./assets/portfolio3.png"
+                alt="libertynewsbd.com website preview"
+                class="w-full h-48 object-cover"
+              />
+              <div class="p-5">
+                <h3 class="text-xl font-semibold mb-1">Liberty News BD</h3>
+                <p class="text-sm text-gray-400 mb-3">
+                  News Portal – Fast, dynamic and reader friendly.
+                </p>
+                <a
+                  href="https://www.libertynewsbd.com"
+                  target="_blank"
+                  class="text-primary hover:underline"
+                  >Live Preview →</a
+                >
+              </div>
+            </div>
+            <div
+              class="tilt-card bg-dark border border-white/10 rounded-2xl overflow-hidden shadow-card hover:shadow-xl transition-shadow"
+              data-aos="fade-up"
+              data-aos-delay="300"
+            >
+              <img
+                src="./assets/portfolio4.png"
+                alt="arabgrowthgroup.com website preview"
+                class="w-full h-48 object-cover"
+              />
+              <div class="p-5">
+                <h3 class="text-xl font-semibold mb-1">Arab Growth Group</h3>
+                <p class="text-sm text-gray-400 mb-3">
+                  Cross-border investment platform connecting South Asia & GCC.
+                </p>
+                <a
+                  href="https://www.arabgrowthgroup.com"
+                  target="_blank"
+                  class="text-primary hover:underline"
+                  >Live Preview →</a
+                >
+              </div>
+            </div>
+            <div
+              class="tilt-card bg-dark border border-white/10 rounded-2xl overflow-hidden shadow-card hover:shadow-xl transition-shadow"
+              data-aos="fade-up"
+              data-aos-delay="400"
+            >
+              <img
+                src="./assets/portfolio5.png"
+                alt="councilstartup.com website preview"
+                class="w-full h-48 object-cover"
+              />
+              <div class="p-5">
+                <h3 class="text-xl font-semibold mb-1">Council Startup</h3>
+                <p class="text-sm text-gray-400 mb-3">
+                  Startup Consulting – Contemporary site for growing businesses.
+                </p>
+                <a
+                  href="https://www.councilstartup.com"
+                  target="_blank"
+                  class="text-primary hover:underline"
+                  >Live Preview →</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =================== About =================== -->
+      <section id="about" class="py-20" aria-labelledby="about-title">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="grid lg:grid-cols-2 gap-12 items-center">
+            <div data-aos="fade-right">
+              <!-- EDIT ME: About heading -->
+              <h2
+                id="about-title"
+                class="text-3xl sm:text-4xl font-bold mb-4"
+              >
+                About Me
+              </h2>
+              <!-- EDIT ME: About description -->
+              <p class="text-gray-400 mb-6">
+                I’m Iftekhar Alam, a senior WordPress developer & web designer with over four years of experience creating beautiful, high‑performance websites. My passion lies in blending design aesthetics with technical excellence to deliver sites that don’t just look great but also drive results.
+              </p>
+              <p class="text-gray-400 mb-6">
+                Whether you’re a small business, a startup or an agency, I can help you establish a strong online presence with clean code, fast load times and an emphasis on user experience.
+              </p>
+              <div class="mt-8 grid grid-cols-2 gap-4">
+                <!-- List of skills / specialties -->
+                <div class="flex items-center space-x-3" data-aos="fade-up">
+                  <ion-icon name="code-slash-outline" class="text-primary text-2xl"></ion-icon>
+                  <span>WordPress</span>
+                </div>
+                <div class="flex items-center space-x-3" data-aos="fade-up" data-aos-delay="50">
+                  <ion-icon name="extension-puzzle-outline" class="text-primary text-2xl"></ion-icon>
+                  <span>Elementor</span>
+                </div>
+                <div class="flex items-center space-x-3" data-aos="fade-up" data-aos-delay="100">
+                  <ion-icon name="rocket-outline" class="text-primary text-2xl"></ion-icon>
+                  <span>Performance</span>
+                </div>
+                <div class="flex items-center space-x-3" data-aos="fade-up" data-aos-delay="150">
+                  <ion-icon name="search-outline" class="text-primary text-2xl"></ion-icon>
+                  <span>SEO</span>
+                </div>
+              </div>
+            </div>
+            <div data-aos="fade-left" class="relative">
+              <!-- Decorative image or pattern -->
+              <img
+                src="./assets/hero.png"
+                alt="Profile abstract decoration"
+                class="w-full max-w-sm mx-auto lg:mx-0 rounded-2xl shadow-lg"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =================== Why Choose Me =================== -->
+      <section id="why" class="py-20 bg-secondary/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-12">
+            <!-- EDIT ME: Why choose me heading -->
+            <h2 class="text-3xl sm:text-4xl font-bold mb-3">
+              Why Choose Me
+            </h2>
+            <p class="text-gray-400 max-w-2xl mx-auto">
+              I combine technical expertise with design sensibility to deliver websites that not only look stunning but also perform exceptionally.
+            </p>
+          </div>
+          <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            <!-- Value point cards -->
+            <div class="bg-white/5 backdrop-blur p-6 rounded-2xl border border-white/10 shadow-card" data-aos="fade-up">
+              <div class="mb-3 text-primary text-4xl">
+                <ion-icon name="brush-outline"></ion-icon>
+              </div>
+              <h3 class="font-semibold mb-1">Modern Premium Design</h3>
+              <p class="text-sm text-gray-400">
+                Clean, contemporary aesthetics that reflect the quality of your brand.
+              </p>
+            </div>
+            <div class="bg-white/5 backdrop-blur p-6 rounded-2xl border border-white/10 shadow-card" data-aos="fade-up" data-aos-delay="100">
+              <div class="mb-3 text-primary text-4xl">
+                <ion-icon name="phone-portrait-outline"></ion-icon>
+              </div>
+              <h3 class="font-semibold mb-1">Responsive Layouts</h3>
+              <p class="text-sm text-gray-400">
+                A seamless experience across desktop, tablet and mobile devices.
+              </p>
+            </div>
+            <div class="bg-white/5 backdrop-blur p-6 rounded-2xl border border-white/10 shadow-card" data-aos="fade-up" data-aos-delay="200">
+              <div class="mb-3 text-primary text-4xl">
+                <ion-icon name="speedometer-outline"></ion-icon>
+              </div>
+              <h3 class="font-semibold mb-1">Fast Loading Times</h3>
+              <p class="text-sm text-gray-400">
+                Optimized performance for better rankings and user satisfaction.
+              </p>
+            </div>
+            <div class="bg-white/5 backdrop-blur p-6 rounded-2xl border border-white/10 shadow-card" data-aos="fade-up" data-aos-delay="300">
+              <div class="mb-3 text-primary text-4xl">
+                <ion-icon name="shield-checkmark-outline"></ion-icon>
+              </div>
+              <h3 class="font-semibold mb-1">Reliable Communication</h3>
+              <p class="text-sm text-gray-400">
+                Transparent and prompt updates throughout the project lifecycle.
+              </p>
+            </div>
+            <div class="bg-white/5 backdrop-blur p-6 rounded-2xl border border-white/10 shadow-card" data-aos="fade-up" data-aos-delay="400">
+              <div class="mb-3 text-primary text-4xl">
+                <ion-icon name="rocket-outline"></ion-icon>
+              </div>
+              <h3 class="font-semibold mb-1">Conversion‑Focused</h3>
+              <p class="text-sm text-gray-400">
+                Designs that not only look good but convert visitors into clients.
+              </p>
+            </div>
+            <div class="bg-white/5 backdrop-blur p-6 rounded-2xl border border-white/10 shadow-card" data-aos="fade-up" data-aos-delay="500">
+              <div class="mb-3 text-primary text-4xl">
+                <ion-icon name="search-outline"></ion-icon>
+              </div>
+              <h3 class="font-semibold mb-1">SEO Ready</h3>
+              <p class="text-sm text-gray-400">
+                Semantic structure and best practices to help your site rank better.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =================== Process =================== -->
+      <section id="process" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-12">
+            <!-- EDIT ME: Process heading -->
+            <h2 class="text-3xl sm:text-4xl font-bold mb-3">
+              My Process
+            </h2>
+            <p class="text-gray-400 max-w-2xl mx-auto">
+              A simple, transparent workflow designed to deliver your project smoothly from concept to launch.
+            </p>
+          </div>
+          <!-- Steps timeline -->
+          <div class="relative border-l-2 border-primary/20 ml-4">
+            <!-- Step 1 -->
+            <div class="mb-10 pl-8" data-aos="fade-up">
+              <span class="absolute -left-4 top-0 w-3 h-3 bg-primary rounded-full"></span>
+              <h3 class="font-semibold text-lg mb-1">Discovery</h3>
+              <p class="text-gray-400 text-sm">
+                We discuss your goals, audience and project vision to set a clear direction.
+              </p>
+            </div>
+            <!-- Step 2 -->
+            <div class="mb-10 pl-8" data-aos="fade-up" data-aos-delay="100">
+              <span class="absolute -left-4 top-0 w-3 h-3 bg-primary rounded-full"></span>
+              <h3 class="font-semibold text-lg mb-1">Planning</h3>
+              <p class="text-gray-400 text-sm">
+                Structuring the website, outlining pages and preparing the project timeline.
+              </p>
+            </div>
+            <!-- Step 3 -->
+            <div class="mb-10 pl-8" data-aos="fade-up" data-aos-delay="200">
+              <span class="absolute -left-4 top-0 w-3 h-3 bg-primary rounded-full"></span>
+              <h3 class="font-semibold text-lg mb-1">Design & Development</h3>
+              <p class="text-gray-400 text-sm">
+                Crafting visuals and code simultaneously to bring your site to life.
+              </p>
+            </div>
+            <!-- Step 4 -->
+            <div class="mb-10 pl-8" data-aos="fade-up" data-aos-delay="300">
+              <span class="absolute -left-4 top-0 w-3 h-3 bg-primary rounded-full"></span>
+              <h3 class="font-semibold text-lg mb-1">Revisions</h3>
+              <p class="text-gray-400 text-sm">
+                We refine the design based on your feedback to ensure it meets your expectations.
+              </p>
+            </div>
+            <!-- Step 5 -->
+            <div class="pl-8" data-aos="fade-up" data-aos-delay="400">
+              <span class="absolute -left-4 top-0 w-3 h-3 bg-primary rounded-full"></span>
+              <h3 class="font-semibold text-lg mb-1">Launch & Support</h3>
+              <p class="text-gray-400 text-sm">
+                Deploying your website and providing ongoing support to keep it running smoothly.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =================== Testimonials =================== -->
+      <section id="testimonials" class="py-20 bg-secondary/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-12">
+            <!-- EDIT ME: Testimonials heading -->
+            <h2 class="text-3xl sm:text-4xl font-bold mb-3">
+              Testimonials
+            </h2>
+            <p class="text-gray-400 max-w-2xl mx-auto">
+              What my clients are saying about working with me.
+            </p>
+          </div>
+          <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            <!-- Placeholder testimonial cards -->
+            <div class="bg-white/5 backdrop-blur p-6 rounded-2xl border border-white/10 shadow-card" data-aos="fade-up">
+              <p class="text-gray-300 italic mb-4">
+                “Working with Iftekhar was a pleasure – he delivered a stunning website on time and went above and beyond with the design.”
+              </p>
+              <h4 class="font-semibold">Jane Doe</h4>
+              <span class="text-xs text-gray-500">Small Business Owner</span>
+            </div>
+            <div class="bg-white/5 backdrop-blur p-6 rounded-2xl border border-white/10 shadow-card" data-aos="fade-up" data-aos-delay="100">
+              <p class="text-gray-300 italic mb-4">
+                “Our new site not only looks amazing but also loads incredibly fast. Highly recommend!”
+              </p>
+              <h4 class="font-semibold">John Smith</h4>
+              <span class="text-xs text-gray-500">Startup Founder</span>
+            </div>
+            <div class="bg-white/5 backdrop-blur p-6 rounded-2xl border border-white/10 shadow-card" data-aos="fade-up" data-aos-delay="200">
+              <p class="text-gray-300 italic mb-4">
+                “Iftekhar’s attention to detail and commitment to user experience sets him apart. The process was smooth and transparent.”
+              </p>
+              <h4 class="font-semibold">Sarah Lee</h4>
+              <span class="text-xs text-gray-500">Agency Partner</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =================== CTA =================== -->
+      <section id="cta" class="py-20">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <!-- EDIT ME: CTA section text -->
+          <h2 class="text-3xl sm:text-4xl font-bold mb-4">
+            Let’s build a website that grows your business
+          </h2>
+          <p class="text-gray-400 mb-8 max-w-2xl mx-auto">
+            Ready to elevate your online presence? Get in touch today and let’s start turning your vision into reality.
+          </p>
+          <div class="flex flex-col sm:flex-row justify-center gap-4">
+            <a
+              href="#contact"
+              class="px-8 py-3 bg-primary hover:bg-primary-dark text-white rounded-full transition-transform transform hover:-translate-y-1 shadow-lg shadow-primary/30"
+              >Start a Project</a
+            >
+            <a
+              href="#services"
+              class="px-8 py-3 border border-white/20 hover:border-primary text-gray-300 hover:text-primary rounded-full transition-transform transform hover:-translate-y-1"
+              >Learn More</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <!-- =================== Contact =================== -->
+      <section id="contact" class="py-20 bg-secondary/50" aria-labelledby="contact-title">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-12">
+            <!-- EDIT ME: Contact heading -->
+            <h2
+              id="contact-title"
+              class="text-3xl sm:text-4xl font-bold mb-3"
+            >
+              Get in Touch
+            </h2>
+            <p class="text-gray-400 max-w-2xl mx-auto">
+              Have a project in mind or just want to say hello? Fill out the form below or reach me via email or WhatsApp.
+            </p>
+          </div>
+          <div class="grid lg:grid-cols-2 gap-16">
+            <!-- Contact form -->
+            <div data-aos="fade-right">
+              <form id="contactForm" class="space-y-4">
+                <div>
+                  <label for="name" class="block text-sm mb-1">Name</label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    required
+                    class="w-full bg-dark border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:border-primary"
+                    placeholder="Your name"
+                  />
+                </div>
+                <div>
+                  <label for="email" class="block text-sm mb-1">Email</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    required
+                    class="w-full bg-dark border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:border-primary"
+                    placeholder="you@example.com"
+                  />
+                </div>
+                <div>
+                  <label for="message" class="block text-sm mb-1">Message</label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    required
+                    rows="5"
+                    class="w-full bg-dark border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:border-primary"
+                    placeholder="How can I help you?"
+                  ></textarea>
+                </div>
+                <button
+                  type="submit"
+                  class="inline-block px-8 py-3 bg-primary hover:bg-primary-dark text-white rounded-full transition-transform transform hover:-translate-y-1 shadow-lg shadow-primary/30"
+                >
+                  Send Message
+                </button>
+                <!-- Success & error messages -->
+                <p id="formSuccess" class="mt-4 text-green-400 hidden">
+                  Thank you! Your message has been sent successfully.
+                </p>
+                <p id="formError" class="mt-4 text-red-400 hidden">
+                  Oops! Something went wrong. Please try again later.
+                </p>
+              </form>
+            </div>
+            <!-- Contact details -->
+            <div data-aos="fade-left" class="space-y-6">
+              <div class="flex items-center space-x-3">
+                <ion-icon name="mail-outline" class="text-primary text-3xl"></ion-icon>
+                <!-- EDIT ME: Display email address -->
+                <a href="mailto:iftekharalamsami@gmail.com" class="hover:text-primary"
+                  >iftekharalamsami@gmail.com</a
+                >
+              </div>
+              <div class="flex items-center space-x-3">
+                <ion-icon name="logo-whatsapp" class="text-primary text-3xl"></ion-icon>
+                <!-- EDIT ME: WhatsApp number -->
+                <a
+                  href="https://wa.me/8801685098713" target="_blank" class="hover:text-primary"
+                  >Message on WhatsApp</a
+                >
+              </div>
+		<div class="flex items-center space-x-3">
+                <ion-icon name="logo-facebook" class="text-primary text-3xl"></ion-icon>
+                <!-- EDIT ME: Facebook Profile -->
+                <a
+                  href="https://www.facebook.com/58sami" target="_blank" class="hover:text-primary"
+                  >Message on Facebook</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+    <!-- =================== Footer =================== -->
+    <footer class="bg-dark py-8 border-t border-white/5">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h4 class="font-semibold mb-2">Iftekhar Alam</h4>
+        <p class="text-gray-400 text-sm mb-4">
+          Senior WordPress Developer & Web Designer
+        </p>
+        <div class="flex justify-center space-x-6 mb-4">
+          <a href="#services" class="text-gray-400 hover:text-primary text-sm">Services</a>
+          <a href="#work" class="text-gray-400 hover:text-primary text-sm">Work</a>
+          <a href="#about" class="text-gray-400 hover:text-primary text-sm">About</a>
+          <a href="#contact" class="text-gray-400 hover:text-primary text-sm">Contact</a>
+        </div>
+        <p class="text-gray-500 text-xs">
+          © <span id="year"></span> Iftekhar Alam. All rights reserved.
+        </p>
+      </div>
+    </footer>
+
+    <!-- Ionicons -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.1/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.1/dist/ionicons/ionicons.js"></script>
+    <!-- AOS script -->
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <!-- VanillaTilt for card tilt effects -->
+    <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.7.0/dist/vanilla-tilt.min.js"></script>
+    <!-- Custom script -->
+    <script src="./script.js"></script>
+  </body>
+</html>

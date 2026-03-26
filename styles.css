@@ -1,0 +1,47 @@
+/*
+ * Custom styles for the premium portfolio
+ * This file holds additional CSS rules that complement Tailwind classes.
+ * Use it to define custom animations, backgrounds, or tweaks that are not easily expressed with utility classes.
+ */
+
+/* Transparent scroll bar for dark background */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+}
+::-webkit-scrollbar-thumb {
+  background-color: rgba(126, 91, 239, 0.4);
+  border-radius: 4px;
+}
+
+/* Mobile menu open state handled via class toggling in script */
+#mobileMenu.open {
+  max-height: 200px; /* Enough to show all items */
+}
+
+/* Smooth animations for mobile menu */
+#mobileMenu {
+  transition-property: max-height;
+  transition-duration: 0.3s;
+  transition-timing-function: ease;
+}
+
+/* Fade in success/error messages */
+#formSuccess.show,
+#formError.show {
+  display: block;
+  animation: fadeIn 0.5s forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
